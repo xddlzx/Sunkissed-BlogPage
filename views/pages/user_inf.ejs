@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Page</title>
+    <link rel="stylesheet" href="/styles/userinf.css">
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+
+</head>
+<body>
+
+    <% if (!currentUser) { %>
+        <div class="error-message">
+            <h2>Error: You must be logged in to view this page.</h2>
+        </div>
+    <% } else { %>
+        <header>
+            <div class="header-content">
+                <a href="/dashboard">
+                    <img src="/images/homepage.png" alt="Profile" class="homepage-pic">
+                </a>
+                <h1>PRAISE THE SUN!</h1>
+            </div>
+        </header>
+
+        <main>
+            <div class="user-content">
+                <ul>
+                    <li>
+                        <span class="profile-pic">
+                            <img src="/images/praise_the_sun.jpg" alt="Profile" height="150px">
+                        </span>
+                    </li>
+                    <li>
+                        <span class="username"><%= currentUser.username %></span>
+                        <button onclick="toggleEditForm('username')">Edit Username</button>
+                    </li>
+                    <li>
+                        <span class="password">******</span>
+                        <button onclick="toggleEditForm('password')">Edit Password</button>
+                    </li>
+                </ul>
+
+                <!-- Edit username form -->
+                <form id="edit-username-form" class="edit-form" onsubmit="handleFormSubmit(event, 'edit-username-form', '/updateUsername')">
+                    <label for="new-username">New Username:</label>
+                    <input type="text" name="newUsername" id="new-username" value="<%= currentUser.username %>" required oninput="checkUsername()">
+                    <button type="submit">Save</button>
+                </form>
+
+                <!-- Edit password form -->
+                <form id="edit-password-form" class="edit-form" onsubmit="handleFormSubmit(event, 'edit-password-form', '/updatePassword')">
+                    <label for="old-password">Old Password:</label>
+                    <input type="password" name="oldPassword" id="old-password" required>
+                    <br>
+                    <label for="new-password">Password:</label>
+                    <input type="password" name="newPassword" id="new-password" required>
+                    <br>
+                    <small>Your new password must contain at least 8 characters</small>
+                    <br>
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" name="confirmPassword" id="confirm-password" required>
+                    <button type="submit">Save</button>
+                </form>
+
+                <!-- Account deletion form -->
+                <form action="/deleteUser" method="POST">
+                    <button type="submit" onclick="return confirm('Are you sure you want to delete your account?');">
+                        Delete Account
+                    </button>
+                </form>
+            </div> 
+            <div class="footer-userinf">
+                <%- include('partials/footer') %>
+            </div>         
+        </main>
+
+    <% } %>
+
+    <script>
+        function toggleEditForm(field) {
+            const forms = {
+                username: document.getElementById('edit-username-form'),
+                password: document.getElementById('edit-password-form')
+            };
+            Object.values(forms).forEach(form => form.style.display = 'none');
+            forms[field].style.display = forms[field].style.display === 'block' ? 'none' : 'block';
+        }
+
+        function handleFormSubmit(event, formId, url) {
+            event.preventDefault();
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+
+            // Check password validity for password form
+            if (formId === 'edit-password-form') {
+                const newPassword = formData.get('newPassword');
+                const confirmPassword = formData.get('confirmPassword');
+                if (newPassword.length < 8) {
+                    return alert('New password must be at least 8 characters long.');
+                }
+                if (newPassword !== confirmPassword) {
+                    return alert('New password and confirmation do not match.');
+                }
+            }
+
+            fetch(url, {
+                method: 'PUT',
+                body: new URLSearchParams(formData),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.success ? data.message : data.message);
+                if (data.success) location.reload();
+            })
+            .catch(error => alert('An error occurred: ' + error.message));
+        }
+
+        function checkUsername() {
+            const newUsername = document.getElementById('new-username').value;
+            if (newUsername) {
+                fetch(`/checkUsername?username=${encodeURIComponent(newUsername)}`)
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.taken ? 'Username is already taken. Please choose another one.' : 'Username is available!');
+                })
+                .catch(error => console.error('Error checking username:', error));
+            }
+        }
+    </script>
+
+</body>
+</html>

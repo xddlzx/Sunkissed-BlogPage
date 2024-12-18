@@ -1,0 +1,89 @@
+body {
+    background-image: url('/images/log_sign.gif'); /* Resim dosyasının yolu */
+    background-size: 100% 100%; /* Adjust the size to 50% of the width and height of the body */
+    background-position: center; /* Center the background */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    height: 100vh; /* Full viewport height */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Vertical alignment */
+    justify-content: flex-start; /* Align items at the top */
+    align-items: center; /* Center items horizontally */
+    padding-top: 50px; /* Top padding */
+}
+h1,p{
+    color: white;
+    text-align: center;
+}
+button, .button-container a {
+    background-color: #46e64c;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    text-align: center;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .button-container a:hover {
+    background-color: #50d857;
+}
+
+button.secondary {
+    background-color: #555;
+}
+
+button.secondary:hover {
+    background-color: #777;
+}
+
+.button-container a.guest {
+    background-color: #f44336;
+}
+
+.button-container a.guest:hover {
+    background-color: #c9302c;
+}
+
+.form-container {
+    max-width: 400px; /* Maksimum genişlik */
+    width: 100%; /* Genişliği %100 yap */
+    margin: 20px; /* Kenar boşluğu ekle */
+    background: white; /* Arka plan rengi */
+    padding: 20px; /* İçerik alanı */
+    border-radius: 10px; /* Köşe yuvarlama */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Gölge efekti */
+}
+
+.form-container:hover{
+    color: white;
+    opacity: 0.9;
+    background-color: rgba(250, 250, 250, 0.2);
+}
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.response-message {
+    color: red; /* Change this to any color you prefer */
+    font-weight: bold;
+    margin-top: 10px;
+}

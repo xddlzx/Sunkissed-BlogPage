@@ -1,0 +1,81 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('/images/adventure.gif'); /* Resim dosyasının yolu */
+    background-size: cover; /* Resmi kapsayacak şekilde boyutlandır */
+    background-position: center; /* Resmi ortala */
+    background-repeat: no-repeat; /* Resmi tekrar etme */
+    height: 100vh; /* Tüm yüksekliği kapla */
+    color: white; /* Yazı rengini beyaz yap */
+    display: flex; /* Flexbox kullan */
+    flex-direction: column; /* Dikey hizalama */
+    justify-content: center; /* Dikey merkezleme */
+    align-items: center; /* Yatay merkezleme */
+    text-align: center;
+    padding: 20px; /* İçerik kenarları */
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1); /* Soluk gri tonu */
+    z-index: -1; /* Arka planda kalması için */
+}
+h1 {
+    color: #ffffff; /* Consistent with your theme */
+    margin-bottom: 20px; /* Space below the heading */
+    font-size: 4rem;
+}
+
+p {
+    color: #ffffff; /* Dark text for readability */
+    margin-bottom: 30px; /* Space below the paragraph */
+    line-height: 1.6; /* Improved readability */
+}
+
+#welcomeText {
+    background-color: rgba(255, 255, 255, 0.5); /* Light gray background */
+    padding: 20px; /* Add some padding around the text */
+    border-radius: 8px; /* Optional: rounds the corners */
+    font-size: 1.2rem; /* Adjust font size */
+    color: #333; /* Text color */
+    max-width: 800px; /* Optional: limits width for readability */
+    margin: 20px auto; /* Centers the paragraph horizontally with some margin */
+}
+
+.button-container {
+    display: flex; /* Use flexbox to arrange buttons */
+    justify-content: center; /* Center align buttons horizontally */
+    margin-top: 20px; /* Space above buttons */
+}
+
+.button-container a {
+    display: flex; /* Flexbox kullanarak içeriği ortala */
+    justify-content: center; /* Yatayda ortalama */
+    align-items: center; /* Dikeyde ortalama */
+    padding: 8px 15px; /* Butonun içindeki alan */
+    margin: 0 5px; /* Butonlar arası boşluk */
+    background-color: #5a933f; /* Buton rengi */
+    color: white; /* Yazı rengi */
+    text-decoration: none; /* Alt çizgiyi kaldır */
+    border-radius: 5px; /* Yuvarlak köşeler */
+    font-size: 14px; /* Daha küçük yazı boyutu */
+    transition: background-color 0.3s ease; /* Geçiş efekti */
+    width: 120px; /* Butonların genişliği */
+    text-align: center; /* Yazıları merkezde hizala */
+}
+
+.button-container a:hover {
+    background-color: #3d7d41; /* Lighter shade on hover */
+}
+
+.button-container a.highlight {
+    background-color: #0077b6; /* Highlight color for guest login */
+    font-weight: bold; /* Emphasize highlighted button */
+}
+
+.button-container a.highlight:hover {
+    background-color: #005f8a; /* Darker shade on hover for highlight */
+}

@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-image: url('/images/worrior.gif'); /* Resim dosyasının yolu */
+    background-size: cover; /* Resmi oranlarını koruyarak sığdır */
+    background-position: center; /* Resmi ortala */
+    background-repeat: no-repeat; /* Resmi tekrar etme */
+    background-color: #f0f0f0; /* Boş alanlar için arka plan rengi */
+    font-family: Arial, sans-serif;
+}
+header {
+    text-align: center;
+    background-color: rgb(52, 49, 49);
+    padding: 5px; /* Adjusted padding to match the blog header */
+    font-size: 24px;
+}
+.homepage-pic {
+    width: 40px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+h1 {
+    color: white;
+}
+.user-content {
+    background-color: rgba(210, 190, 200, 0.5); /* Semi-transparent background */
+    border-radius: 8px;
+    padding: 30px; /* Increase padding for a larger box */
+    max-width: 500px; /* Increase max-width to make the box wider */
+    margin: 40px auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.user-content ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.user-content li {
+    padding: 8px 0;
+    font-size: 22px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.profile-pic {
+    display: block;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+}
+.username, .password {
+    font-weight: bold;
+}
+button {
+    margin-left: 10px;
+    padding: 4px 8px;
+    background-color: rgb(194, 63, 37);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.edit-form {
+    display: none;
+    margin-top: 10px;
+    padding: 15px; /* Adds padding inside the form */
+    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for emphasis */
+}
+.user-content button {
+    padding: 6px 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    color: rgba(255, 255, 255);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.user-content button:hover {
+    background-color: rgb(118, 25, 6);
+}
+.footer-userinf {
+    margin-top: 40px; /* More space above the footer */
+}

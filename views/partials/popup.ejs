@@ -1,0 +1,146 @@
+<head>
+  <link rel="stylesheet" href="/styles/popup.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+</head>
+<body>
+
+  <!-- Optional overlay for background dimming -->
+  <div id="overlay"></div>
+
+  <% if (currentUser) { %>
+    <!-- Logged-in users see the button that opens the popup -->
+    <button id="plusButton" class="plusButton">+</button>  
+  <% } else { %>
+    <!-- Guests see the button that redirects them to the sign-up page -->
+    <button id="guestButton" class="plusButton">+</button>
+  <% } %>
+
+  <!-- Confirmation Popup -->
+  <div id="confirmationPopup">
+    <p>Blog paylaşmak için kayıt olmalısınız. Devam etmek ister misiniz?</p>
+    <button id="confirmYes">Evet</button>
+    <button id="confirmNo">Hayır</button>
+  </div>
+
+  <div id="sharePopup">
+    <p>Paylaştığınız blogları tekrar editleyemezsiniz ve tüm kullanıcılar görür. Devam etmek ister misiniz?</p>
+    <button id="shareYes">Evet</button>
+    <button id="shareNo">Hayır</button>
+  </div>
+
+  <!-- Popup for adding blogs (only shown if user is logged in) -->
+  <div id="popup">
+    <form id="add-blog" action="/addBlog" method="POST">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required maxlength="40">
+      <small>Title must be maksimum 40 characters</small>
+      <br>
+      <br>
+      <label for="content">Content:</label>
+      <textarea id="content" name="content" required maxlength="2500"></textarea>
+      <div id="charCount">2500 characters remaining</div>
+
+      <div class="form-buttons">
+        <button type="button" id="shareButton">Share</button> <!-- Change to type="button" -->
+        <button type="button" id="cancelButton">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const contentTextarea = document.getElementById('content');
+    const charCountDiv = document.getElementById('charCount');
+    const maxChars = 2500;
+
+    // Update character count in the textarea
+    contentTextarea.addEventListener('input', function () {
+      const remainingChars = maxChars - contentTextarea.value.length;
+      charCountDiv.textContent = `${remainingChars} characters remaining`;
+
+      // Change color if nearing character limit
+      if (remainingChars < 50) {
+        charCountDiv.style.color = 'red'; // Turn text red when near limit
+      } else {
+        charCountDiv.style.color = 'green';
+      }
+    });
+
+    // For guest users to show confirmation popup
+    const guestButton = document.getElementById('guestButton');
+
+    if (guestButton) {
+      guestButton.addEventListener('click', function () {
+        document.getElementById('confirmationPopup').style.display = 'flex'; // Show confirmation popup
+      });
+    }
+
+    const shareButton = document.getElementById('shareButton');
+    if (shareButton) {
+      shareButton.addEventListener('click', function () {
+    // Check if the required fields are filled
+    const titleInput = document.getElementById('title');
+    const contentTextarea = document.getElementById('content');
+    
+    if (!titleInput.value.trim() || !contentTextarea.value.trim()) {
+      alert("Please fill in all required fields."); // Alert if fields are empty
+      return; // Stop execution if fields are not filled
+    }
+
+    // Show share warning if fields are filled
+    document.getElementById('sharePopup').style.display = 'flex'; // Show share warning
+    document.getElementById('overlay').style.display = 'block'; // Show overlay
+  });
+}
+
+document.getElementById('shareYes').addEventListener('click', function () {
+  document.getElementById('sharePopup').style.display = 'none'; // Hide share warning
+  document.getElementById('overlay').style.display = 'none'; // Hide overlay
+  document.getElementById('add-blog').submit(); // Submit the form
+});
+
+    document.getElementById('shareYes').addEventListener('click', function() {
+      document.getElementById('sharePopup').style.display = 'none'; // Hide share warning
+      document.getElementById('overlay').style.display = 'none'; // Hide overlay
+      document.getElementById('add-blog').submit(); // Submit the form
+    });
+
+    document.getElementById('shareNo').addEventListener('click', function() {
+      document.getElementById('sharePopup').style.display = 'none'; // Hide share warning
+      document.getElementById('overlay').style.display = 'none'; // Hide overlay
+    });
+
+
+    // Yes button in confirmation popup redirects to sign-up
+    document.getElementById('confirmYes').addEventListener('click', function () {
+      window.location.href = '/signup'; // Redirect to sign-up page
+    });
+
+    // Hide confirmation popup
+    document.getElementById('confirmNo').addEventListener('click', function () {
+      document.getElementById('confirmationPopup').style.display = 'none'; // Hide confirmation popup
+    });
+
+    // Show popup for logged-in users
+    const plusButton = document.getElementById('plusButton');
+    if (plusButton) {
+      plusButton.addEventListener('click', function () {
+        document.getElementById('popup').style.display = 'flex'; // Use flex to maintain layout
+        document.getElementById('overlay').style.display = 'block'; // Show overlay
+      });
+    }
+
+    // Hide popup
+    document.getElementById('cancelButton').addEventListener('click', function () {
+    document.getElementById('popup').style.display = 'none'; // Hide the main blog popup
+    document.getElementById('overlay').style.display = 'none'; // Hide overlay
+      document.getElementById('shareNo').click();
+});
+
+    // Close popup if overlay is clicked
+    document.getElementById('overlay').addEventListener('click', function () {
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    });
+  </script>
+
+</body>

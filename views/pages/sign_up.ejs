@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/log_sign.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero est, consequatur magni incidunt vel, corporis dignissimos aperiam qui deserunt delectus libero corrupti veritatis explicabo eaque aliquam nam dolor inventore quae.</p>
+
+    <div class="form-container">
+        <form action="/blog_signin" method="POST">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="check">Password:</label>
+                <input type="password" id="check" name="check" required>
+                <br>
+                <small>You password must contain at least 8 characters</small>
+            </div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <% if (locals.response) { %>
+            <p class="response-message"><%= response %></p> <!-- response'i burada doğrudan kullanabilirsin -->
+        <% } %>
+    </div>
+    <%- include('partials/footer') %>
+</body>
+</html>

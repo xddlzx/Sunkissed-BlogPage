@@ -1,0 +1,38 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('/images/aboutus.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-color: #f1faee;
+    color: #023047;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+p {
+    font-size: 1.3rem; /* You can adjust this value to make it smaller or larger */
+    margin-right: 30px;
+    margin-top: 20px;
+}
+
+.content-container {
+    color: white;
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 100;
+    align-items: center;
+    margin-top: 80px; /* Moves this container downward */
+}
+.content-social a{
+    color: white;
+    text-decoration: none;
+}
+.content-bottom {
+    margin-bottom: 20px; /* Adds space from the bottom */
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+  <style>
+    .aboutus-button {
+      margin-left: 10px; 
+    }
+    button {
+      background-color: rgb(137, 103, 179)
+    }
+  </style>
+</head>
+</head>
+<header>
+    <div class="profile-container">
+        <% if (currentUser) { %>
+            <a href="/profile">
+                <img src="/images/praise_the_sun.jpg" alt="Profile" class="profile-pic">
+            </a>
+            <span class="username"><%= currentUser.username %></span>
+            <a href="/logout"><button class="primary">Log Out</button></a>
+        <% } else { %>
+            <img src="/images/profile-placeholder.jpg" class="profile-pic" alt="Guest">
+            <span class="username">Guest</span>
+            <a href="/signup"><button class="primary">Sign Up</button></a>
+        <% } %>
+        <div class="aboutus-button">
+            <a href="/aboutus"><button class="primary">About Us</button></a>
+        </div>
+    </div>
+    <button onclick="getWeather()">
+      <h1 id="weatherText">PRAISE THE SUN!</h1>
+      <small id="weatherDescription"></small>
+    </button>
+</header>
+<script src="/scripts/fetch_weather.js"></script>
+<body>
+  <main>

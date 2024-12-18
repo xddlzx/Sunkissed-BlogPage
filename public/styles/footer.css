@@ -1,0 +1,82 @@
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
+}
+
+main {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    padding: 20px;
+}
+
+/* Footer styles */
+.footer {
+    background-color: rgba(255, 255, 255, 0.1); /* Dark background for visibility */
+    color: #fff; /* White text color for contrast */
+    padding: 20px 0; /* Padding above and below */
+    text-align: center; /* Center text */
+    margin-top: auto; /* Ensure footer is at the bottom of the page */
+}
+
+.footer-container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-around; /* Space items evenly */
+    max-width: 1200px; /* Max width for footer content */
+    margin: 0 auto; /* Center footer content */
+}
+
+.footer-about, .footer-links, .footer-social {
+    width: 30%; /* Each section takes up 30% of the container */
+}
+
+.footer h4 {
+    font-size: 1.2em; /* Larger font for headings */
+    margin-bottom: 10px; /* Space below headings */
+}
+
+.footer p, .footer ul {
+    font-size: 0.9em; /* Smaller font for body text */
+    line-height: 1.5; /* Line spacing for readability */
+}
+
+.footer ul {
+    list-style: none; /* Remove bullet points from list */
+    padding: 0; /* Remove padding */
+}
+
+.footer ul li {
+    margin: 5px 0; /* Space between list items */
+}
+
+.footer a {
+    color: white; /* White links */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 0.9em; /* Font size for links */
+}
+
+.footer a:hover {
+    color: #ccc; /* Light gray on hover */
+}
+
+.footer-bottom {
+    text-align: center; /* Center the bottom text */
+    margin-top: 20px; /* Space above bottom text */
+    font-size: 0.8em; /* Smaller font for footer bottom */
+    color: #bbb; /* Light gray for bottom text */
+}
+
+.footer-bottom p {
+    margin: 0; /* Remove margin from bottom paragraph */
+}
