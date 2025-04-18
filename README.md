@@ -44,17 +44,21 @@ Make sure you have the following installed:
    git clone https://github.com/xddlzx/Sunkissed-BlogPage.git
 
 2. Navigate into the project directory:
-   
- cd Sunkissed-BlogPage
 
-3. Install the dependencies:
-   
+   ```bash
+   cd Sunkissed-BlogPage
+
+4. Install the dependencies:
+
+   ```bash
    npm install
    
-4. Start the development server:
-   
+6. Start the development server:
+
+   ```bash
    node index.js
    
-5. Open your browser and go to:
-   
+7. Open your browser and go to:
+
+   ```bash
    http://localhost:3000
